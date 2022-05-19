@@ -7,6 +7,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize, word_tokenize
 from itertools import count
+import keywords as ky
 
 from nltk import sent_tokenize, word_tokenize, pos_tag, ne_chunk
 
@@ -18,10 +19,10 @@ text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
 words = text.split()
 print(words)
 spw=stopwords.words("english")
-spw_include=['no', 'not', 'none', 'unavailabe']
-water=['water','clogged', 'stagnant', 'water', 'insufficient', 'logging']
-electric=['power', 'no power', 'current', 'no current', 'power']
-departments=['water board', 'electric board']
+spw_include=ky.spw_include
+water=ky.water
+electric=ky.electric
+departments=ky.departments
 words = [w for w in words if w not in spw or w in spw_include ]
 tagged = nltk.pos_tag(words)
 print(tagged)
