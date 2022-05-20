@@ -3,7 +3,6 @@ import re
 from nltk.corpus import stopwords
 #nltk.download('stopwords')
 #nltk.download('averaged_perceptron_tagger')
-#nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize, word_tokenize
 from itertools import count
