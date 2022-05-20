@@ -13,7 +13,7 @@ from nltk import sent_tokenize, word_tokenize, pos_tag, ne_chunk
 
 
 
-text = "No current in my area"
+text = "No  in my area"
 #print(word_tokenize(text))
 text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
 words = text.split()
