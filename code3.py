@@ -2,9 +2,9 @@
 import nltk
 import re
 from nltk.corpus import stopwords
-#nltk.download('stopwords')
-#nltk.download('averaged_perceptron_tagger')
-#nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize, word_tokenize
 from itertools import count
@@ -14,8 +14,8 @@ from nltk import sent_tokenize, word_tokenize, pos_tag, ne_chunk
 
 #function
 def flagship_department(query):
+      text=query
       #text = "No current in my area"
-
       #print(word_tokenize(text))
       text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
       words = text.split()
@@ -30,10 +30,12 @@ def flagship_department(query):
       print(tagged)
       print(count)
       print(words)
+      department=""
       for i in words:
             if i in water:
-                  print("water board")
+                  department="water board"
                   break
             if i in electric:
-                  print("EB")
+                  department="EB"
                   break
+      return department
