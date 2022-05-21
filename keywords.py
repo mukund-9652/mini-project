@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv (r'C:\Users\HP\Desktop\mini-project\csv\Dataset_Water.xlsx')
+df = pd.read_csv (r'csv\Dataset_Water.xlsx')
 print (df)
 
 spw_include=['no', 'not', 'none', 'unavailabe']
