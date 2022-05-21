@@ -19,7 +19,7 @@ def flagship_department(query):
       #print(word_tokenize(text))
       text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
       words = text.split()
-      print(words)
+      #print(words)
       spw=stopwords.words("english")
       spw_include=ky.spw_include
       water=ky.water
@@ -27,13 +27,13 @@ def flagship_department(query):
       departments=ky.departments
       words = [w for w in words if w not in spw or w in spw_include ]
       tagged = nltk.pos_tag(words)
-      print(tagged)
-      print(count)
-      print(words)
+      #print(tagged)
+      #print(count)
+      #print(words)
       department=""
       for i in words:
             if i in water:
-                  department="water board"
+                  department="water"
                   break
             if i in electric:
                   department="EB"
