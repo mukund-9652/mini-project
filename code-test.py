@@ -1,9 +1,8 @@
 import nltk
 import re
 from nltk.corpus import stopwords
-#nltk.download('stopwords')
+#nltk.download('stopwords)
 #nltk.download('averaged_perceptron_tagger')
-#nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize, word_tokenize
 from itertools import count
@@ -13,7 +12,7 @@ from nltk import sent_tokenize, word_tokenize, pos_tag, ne_chunk
 
 
 
-text = "No current in my area"
+text = "No  in my area"
 #print(word_tokenize(text))
 text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
 words = text.split()
