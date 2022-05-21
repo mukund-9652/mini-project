@@ -2,7 +2,8 @@ import os
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
-from code import *
+from code3 import *
+from mail import *
 
 
 app = Flask(__name__)
@@ -14,21 +15,23 @@ def incoming_sms():
     body = request.values.get('Body', None)
     number=request.values.get('From')
     
-    outging_sms(number,body)
+    outging_sms(number,flagship_department(body),body)
     return ""
 
-def outging_sms(number,body):
-    account_sid = 'AC4464f1edbc6a2294a3594298f1a25d4d'
-    auth_token = 'b6ff1d80e3e98e04db43ce5174374f18'
+def outging_sms(number,department,body):
+    account_sid = 'AC3edc22200ecf6413ddb792ba3e9d878d'
+    auth_token = '131ce5e911472ea66e78a0a7c7e0d9d3'
     client = Client(account_sid, auth_token)
-    return_message=body+" is your response that has been recieved. Kindly wait for futher details. " + str(number)
+
+    return_message="Your response that has been sent to "+department+". Kindly wait for futher details. "
     message = client.messages \
                     .create(
                         body=return_message,
-                        from_='+19497494849',
+                        from_='+19403985871',
                         to=number
                     )
     print(message.sid)
+    mail_to_department(department,number,body)
 
 if __name__ == "__main__":
     app.run(debug=True)
