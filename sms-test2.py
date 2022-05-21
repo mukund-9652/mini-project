@@ -1,18 +1,33 @@
-from flask import Flask, request
-from twilio import twiml
+import os
+from flask import Flask, request, redirect
+from twilio.twiml.messaging_response import MessagingResponse
+from twilio.rest import Client
 
 
 app = Flask(__name__)
 
+@app.route("/sms", methods=['GET', 'POST'])
+def incoming_sms():
+    """Send a dynamic reply to an incoming text message"""
+    # Get the message the user sent our Twilio number
+    body = request.values.get('Body', None)
+    b=request.values.get('From')
+    print(b)
+    outging_sms(b,body)
+    return ""
 
-@app.route('/sms', methods=['POST'])
-def sms():
-    number = request.form['From']
-    message_body = request.form['Body']
+def outging_sms(number,body):
+    account_sid = 'AC4464f1edbc6a2294a3594298f1a25d4d'
+    auth_token = 'b6ff1d80e3e98e04db43ce5174374f18'
+    client = Client(account_sid, auth_token)
+    return_message=body+" is your response that has been recieved. Kindly wait for futher details. " + str(number)
+    message = client.messages \
+                    .create(
+                        body=return_message,
+                        from_='+19497494849',
+                        to=number
+                    )
+    print(message.sid)
 
-    resp = twiml.Response()
-    resp.message('Hello {}, you said: {}'.format(number, message_body))
-    return str(resp)
-
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    app.run(debug=True)
