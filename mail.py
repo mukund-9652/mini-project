@@ -13,7 +13,7 @@ def mail_to_department(department,number,message):
         smtp.starttls() 
 
         #User Authentication m
-        smtp.login("meckendor@gmail.com","SAKTHIRAVI")
+        smtp.login("meckendor@gmail.com","") #ask mukund r s for password
 
         #Defining The Message 
         message = "Respect Sir,\nThere has been a complaint \nMobile:"+number+"\nComplaint: "+message+".\nKindly do the needfull within 3 days.\n\nRegards,\nAutomated-Mail"
